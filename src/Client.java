@@ -19,9 +19,16 @@ public class Client {
 
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
             outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            outputStream.writeObject(new Message("Kazi", "Hello I am here"));
-            System.out.println("Message sent.");
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendMessage(Message msg)
+    {
+        try {
+            outputStream.writeObject(msg);
         } catch (IOException e) {
             e.printStackTrace();
         }
